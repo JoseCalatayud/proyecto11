@@ -1,41 +1,46 @@
 package es.santander.ascender.proyecto11;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileProcesor implements IFileProcesor {
 
     @Override
     public String leerFile(String filePath) throws Exception {
-        File file = new File(filePath);
-        String texto = "";
-        try (FileReader fr = new FileReader(file)) {
-            BufferedReader br = new BufferedReader(fr);
-            // Lectura del fichero
-            texto = br.readLine();
-            return texto;
+        String salida = "";
+        try (InputStream entrada = new FileInputStream(filePath) ;
+        InputStreamReader irs = new InputStreamReader(entrada);
+        BufferedReader bf = new BufferedReader(irs)) {
+            String linea;
+            while((linea = bf.readLine()) != null){                
+                salida += linea;
+            }
+            System.out.println(salida);
         } catch (Exception e) {
-            e.getCause();
-            return e.getLocalizedMessage();
+            // TODO: handle exception
         }
+        return salida;
+        
     }
 
     @Override
     public String eliminarVocales(String input) {
-        // TODO Auto-generated method stub
-        String [] vocales = {"a","e","i","o","u"};
-        for (String string : vocales) {
-            input.re
-        }
+                
+        String regex ="[aeiouAEIOUáéíóúÁÉÍÓÚüÜ]";
+        String output = input.replaceAll(regex, "");
+        return output;
     }
 
     @Override
     public void escribirAFile(String filePath, String content) throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'escribirAFile'");
+        FileWriter fw = new FileWriter(filePath);
+        BufferedWriter bf = new BufferedWriter(fw);
+        bf.write(content);
+        bf.close();
     }
 
 }
