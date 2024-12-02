@@ -11,19 +11,19 @@ public class FileProcesor implements IFileProcesor {
 
     @Override
     public String leerFile(String filePath) throws Exception {
-        String salida = "";
+        StringBuilder sb = new StringBuilder();
         try (InputStream entrada = new FileInputStream(filePath) ;
         InputStreamReader irs = new InputStreamReader(entrada);
         BufferedReader bf = new BufferedReader(irs)) {
             String linea;
             while((linea = bf.readLine()) != null){                
-                salida += linea;
+                sb.append(linea);
             }
-            System.out.println(salida);
+            
         } catch (Exception e) {
-            // TODO: handle exception
+            e.getMessage();
         }
-        return salida;
+        return sb.toString();
         
     }
 
@@ -31,8 +31,8 @@ public class FileProcesor implements IFileProcesor {
     public String eliminarVocales(String input) {
                 
         String regex ="[aeiouAEIOUáéíóúÁÉÍÓÚüÜ]";
-        String output = input.replaceAll(regex, "");
-        return output;
+        String salida = input.replaceAll(regex, "");
+        return salida;
     }
 
     @Override

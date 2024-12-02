@@ -12,6 +12,7 @@ public class GestionEstudiantes implements IGestionEstudiantes {
 
     private HashMap <String, Integer> calificaciones = new HashMap<String, Integer>();
     private HashSet <String> estudiantes = new HashSet<>();
+    
 
     public HashMap<String, Integer> getCalificaciones() {
         return calificaciones;
@@ -28,6 +29,8 @@ public class GestionEstudiantes implements IGestionEstudiantes {
     public void setEstudiantes(HashSet<String> estudiantes) {
         this.estudiantes = estudiantes;
     }
+
+
 
     @Override
     public boolean agregarEstudiante(String nombre, int calificacion) {
