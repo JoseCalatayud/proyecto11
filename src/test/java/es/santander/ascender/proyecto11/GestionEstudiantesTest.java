@@ -41,7 +41,7 @@ public class GestionEstudiantesTest {
         assertEquals(90, gestion.obtenerCalificacion("Ana"));
         assertEquals(80, gestion.obtenerCalificacion("Luis"));
     }
-
+    
     @Test
     void testEliminarEstudiante() {
         gestion.agregarEstudiante("Carlos", 75);

@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class GestionEstudiantes implements IGestionEstudiantes {
     
@@ -12,7 +11,7 @@ public class GestionEstudiantes implements IGestionEstudiantes {
 
     private HashMap <String, Integer> calificaciones = new HashMap<String, Integer>();
     private HashSet <String> estudiantes = new HashSet<>();
-    
+
 
     public HashMap<String, Integer> getCalificaciones() {
         return calificaciones;
